@@ -1,0 +1,110 @@
+--------------------------------------------------------------------------------
+-- HEIG-VD, Haute Ecole d'Ingenierie et de Gestion du canton de Vaud
+-- Institut REDS, Reconfigurable & Embedded Digital Systems
+--
+-- File         : A_LIRE_AVANT_TOUT.txt
+--
+-- Description  : Quelques explications pour le projet Intro Bin-Lin
+--                Introduction flow VHDL et outils EDA
+--
+-- Author       : Etienne Messerli
+-- Date         : 17.02.2015
+-- Version      : 0.0
+--
+-- Dependencies : 
+--
+--| Modifications |-------------------------------------------------------------
+-- Version   Auteur      Date               Description
+-- 0.0       EMI         17.02.2015         Initial version.
+-- 1.0       EMI         16.09.2015         Adaptation pour utiliser 
+--                                          console_sim.vhd, simulation avec la
+--                                          console REDS
+-- 1.1       EMI         24.02.2016         Adaptation noms repertoires
+--------------------------------------------------------------------------------
+
+--| A. Liste des fichiers/dossiers |--------------------------------------------
+.
+|- A_LIRE_AVANT_TOUT.txt            Ce fichier: A lire avant l'utilisation du 
+|                                       projet intro_bin_lin. Il decrit 
+|                                       l'utilisation des differents fichiers 
+|                                       script (*.tcl)
+|
+|- run_comp_bin_lin_2to4_sim.tcl    Script de compilation pour la simulation 
+|                                       manuelle de bin_lin2to4.vhd avec la 
+|                                       console REDS
+|
+|- run_comp_bin_lin_2to4_tb.tcl     Script de compilation pour la simulation de 
+|                                       bin_lin_2to4.vhd avec un banc de test
+|                                       automatique
+|
+|- run_comp_bin_lin_3to8_tb.tcl     Script de compilation pour la simulation de
+|                                       bin_lin_3to8.vhd avec un banc de test 
+|                                       automatique
+|
+|- wave_bin_lin_2to4_tb.tcl         Ajoute les signaux pour la simulation avec 
+|                                       tb 
+|
+|- wave_bin_lin_3to8_tb.tcl         Ajoute les signaux pour la simulation avec
+|                                       tb 
+|
+|-- comp                            Dossier de travail pour la simulation
+|                                       Repertoire de travail pour Questasim
+|
+|-- pr                              Repertoire pour realiser des syntheses de 
+|                                       test du design bin_lin pour divers 
+|                                       architectures
+|
+|-- pr_cpld                         Repertoire pour la synthese et le p+r pour 
+|                                       l'integration dans le circuit MAX-V
+|
+|-- src                             Repertoire pour les sources des descriptions
+|   |                                   du Bin-Lin
+|   |
+|   |- bin_lin_2to4.vhd             Fichier source du bin_lin_2to4
+|   |
+|   \- bin_lin_3to8.vhd             Fichier source du bin_lin_3to8
+|
+|-- src_cpld                        Repertoire contenant les tops pour 
+|   |                                   l'integration dans carte MaxV 
+|   |
+|   |- maxv_top_3to8.vhd            Fichier top pour integration du bin_lin_3to8
+|   |
+|   \- maxv_top.vhd                 Fichier top pour integration du bin_lin_2to4
+|
+|-- src_pr                          Repertoire contenant les fichiers a copier 
+|   |                                   dans ./pr_cpld/ pour integration
+|   |
+|   |- maxv_top_pin_assignement.qsf Fichier pour assignation pin
+|   |
+|   \- maxv_top.sdc                 Fichier pour timing clock
+|  
+\-- src_tb
+    |- console_sim.vhd              console_sim pour la simulation manuelle, a
+    |                                   utiliser avec la Console_REDS.tcl
+    |
+    |- bin_lin_2to4_tb.vhd          Banc de test automatique pour la simulation
+    |                                   automatique du bin_lin_2to4
+    |
+    \- bin_lin_3to8_tb.vhd          Banc de test automatique pour la simulation
+                                        automatique du bin_lin_3to8
+--------------------------------------------------------------------------------
+
+--| B. Simulations manuelles avec la console REDS_Console |---------------------
+La marche a suivre pour la simulation manuelle avec console REDS_Console.tcl est
+la suivante:
+  1.  Ouvrir QuestaSim
+  2.  Se placer dans le dossier .../comp (File -> Change Directory)
+  3.  Lancer le script de compilation et de chargement
+        do ../run_comp_bin_lin_2to4_sim.tcl
+  4. Utiliser la console REDS pour generer les signaux.
+--------------------------------------------------------------------------------
+
+--| C. Simulations automatique avec le banc de test |---------------------------
+La marche a suivre pour la simulation manuelle avec console REDS_Console.tcl est
+la suivante:
+  1.  Ouvrir QuestaSim
+  2.  Se placer dans le dossier ../comp (File -> Change Directory)
+  3.  Lancer le script de compilation et de chargement
+        do ../run_comp_bin_lin_2to4_tb.tcl
+  4. Lancer la simulation: run all
+--------------------------------------------------------------------------------
